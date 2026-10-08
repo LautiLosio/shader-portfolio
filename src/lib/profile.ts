@@ -23,7 +23,6 @@ export const profile = {
     { name: "YouTube Time Calculator", url: "https://github.com/LautiLosio/totalYouTubeTimeExtension" },
     { name: "Browser Data Cleaner", url: "https://github.com/LautiLosio/browser-data-cleaner-extension" },
     { name: "Auto Tab Grouper", url: "https://github.com/LautiLosio/auto-tab-group-extension" },
-    { name: "Lore Kernel UI+", url: "https://github.com/LautiLosio/lore-kernel-org-styles" },
     { name: "Table Glow", url: "https://github.com/LautiLosio/table-glow-extension" },
     { name: "YouTube Queue Total Time", url: "https://github.com/LautiLosio/youtube-queue-total-time" },
   ],
