@@ -2,6 +2,7 @@ import { profile } from "./profile";
 
 export const translations = {
   en: {
+    projectCategories: "Project categories", web: "Web", extensions: "Extensions",
     sections: "Sections", navigation: ["Home", "About", "Projects", "Contact"],
     hello: "Hi, I'm", aboutTitle: "About me.", projectsTitle: "Projects.", contactTitle: "Let's talk.",
     introduction: "Frontend engineer. I build interfaces and tools that make everyday life easier.",
@@ -11,6 +12,7 @@ export const translations = {
     language: "Switch to Spanish",
   },
   es: {
+    projectCategories: "Categorías de proyectos", web: "Web", extensions: "Extensiones",
     sections: "Secciones", navigation: ["Inicio", "Sobre mí", "Proyectos", "Contacto"],
     hello: "Hola, soy", aboutTitle: "Sobre mí.", projectsTitle: "Proyectos.", contactTitle: "Hablemos.",
     introduction: profile.introduction, about: profile.about,

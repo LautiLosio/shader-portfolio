@@ -1,9 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { profile } from "@/lib/profile";
 import { translations } from "@/lib/translations";
 import "./globals.css";
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const atkinson = localFont({
+  src: [
+    { path: "./fonts/AtkinsonHyperlegible-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/AtkinsonHyperlegible-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./fonts/AtkinsonHyperlegible-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./fonts/AtkinsonHyperlegible-BoldItalic.ttf", weight: "700", style: "italic" },
+  ],
+  variable: "--font-atkinson", display: "swap",
+});
 export const metadata: Metadata = {
   metadataBase: new URL("https://lauti.dev"),
   title: `${profile.name} | Portfolio`,
@@ -12,5 +20,5 @@ export const metadata: Metadata = {
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#000000" };
 export default function RootLayout({ children }: Readonly<{children: React.ReactNode}>) {
-  return <html lang="en"><body className={manrope.variable}>{children}</body></html>;
+  return <html lang="en"><body className={atkinson.variable}>{children}</body></html>;
 }
