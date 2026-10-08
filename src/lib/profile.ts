@@ -13,7 +13,6 @@ export const profile = {
     { name: "Catan", url: "https://catan.lauti.dev" },
     { name: "Links", url: "https://links.lauti.dev" },
     { name: "Pasapalabra", url: "https://github.com/LautiLosio/pasapalabra" },
-    { name: "Account Balance Tracker", url: "https://github.com/LautiLosio/account-balance-tracker" },
     { name: "Address Map Popup", url: "https://github.com/LautiLosio/maps-popup-extension" },
     { name: "Promedio dólar", url: "https://github.com/LautiLosio/promedioBlue" },
   ],
