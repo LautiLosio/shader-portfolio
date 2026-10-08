@@ -38,7 +38,7 @@ export function Portfolio() {
               <button type="button" aria-pressed={projectType === "extensions"} onClick={() => setProjectType("extensions")}>{copy.extensions}</button>
             </div>
             <div className="project-lists">
-              {(["web", "extensions"] as const).map(category => <div key={category} className="project-links" aria-hidden={projectType !== category} inert={projectType !== category}>{(category === "web" ? profile.projects : profile.extensions).map(project => <ExternalLink key={project.url} href={project.url}>{project.name}</ExternalLink>)}</div>)}
+              {(["web", "extensions"] as const).map(category => <div key={category} className={`project-links project-links-${category}`} aria-hidden={projectType !== category} inert={projectType !== category}>{(category === "web" ? profile.projects : profile.extensions).map(project => <ExternalLink key={project.url} href={project.url}>{project.name}</ExternalLink>)}</div>)}
             </div>
           </div>
           <div className="copy-panel" aria-hidden={view !== "contact"} inert={view !== "contact"}><h1>{copy.contactTitle}</h1><p>{copy.contact}</p><a className="email" href={`mailto:${profile.email}`}>{copy.email}<Arrow /></a></div>
