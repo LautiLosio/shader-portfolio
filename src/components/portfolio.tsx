@@ -43,13 +43,14 @@ export function Portfolio() {
           </div>
           <div className="copy-panel" aria-hidden={view !== "contact"} inert={view !== "contact"}><h1>{copy.contactTitle}</h1><p>{copy.contact}</p><a className="email" href={`mailto:${profile.email}`}>{copy.email}<Arrow /></a></div>
         </section>
+      </div>
+    </main>
+    <footer className="footer">
         <div className="social-links">
           <ExternalLink href={profile.linkedin}>LinkedIn</ExternalLink>
           <ExternalLink href={profile.github}>GitHub</ExternalLink>
         </div>
-      </div>
-    </main>
-    <footer className="footer">
+
       <button className="language-toggle" type="button" aria-label={copy.language} onClick={() => setLanguage(value => value === "en" ? "es" : "en")}>{language === "en" ? "EN / ES" : "ES / EN"}</button>
 
       <button className="motion-toggle" type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)} aria-label={paused ? copy.resumeLabel : copy.pauseLabel}>
