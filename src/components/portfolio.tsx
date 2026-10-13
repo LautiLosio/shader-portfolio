@@ -19,7 +19,6 @@ export function Portfolio() {
   const [projectType, setProjectType] = useState<"web" | "extensions">("web");
   const [language, setLanguage] = useState<"en" | "es">("en");
   const [changingLanguage, setChangingLanguage] = useState(false);
-  const [languageChanged, setLanguageChanged] = useState(false);
   const copy = translations[language];
   useEffect(() => { document.documentElement.lang = language; }, [language]);
   useEffect(() => {
@@ -27,7 +26,6 @@ export function Portfolio() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timer = window.setTimeout(() => {
       setLanguage(value => value === "en" ? "es" : "en");
-      setLanguageChanged(true);
       setChangingLanguage(false);
     }, reduced ? 0 : 240);
     return () => window.clearTimeout(timer);
@@ -35,7 +33,7 @@ export function Portfolio() {
   return <div className="portfolio">
     <ShaderBackground paused={paused} />
     <main className="stage">
-      <div key={language} className={`content${changingLanguage ? " language-exit" : languageChanged ? " language-enter" : ""}`}>
+      <div className={`content language-transition${changingLanguage ? " language-exit" : ""}`}>
         <nav className="navigation" aria-label={copy.sections}>
           {(["intro", "about", "projects", "contact"] as View[]).map((id, index) => [id, copy.navigation[index]] as [View, string]).map(([id, label]) =>
             <button key={id} type="button" aria-current={view === id ? "page" : undefined} onClick={() => setView(id)}>{label}</button>)}
