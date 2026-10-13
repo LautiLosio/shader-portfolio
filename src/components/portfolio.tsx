@@ -29,7 +29,7 @@ export function Portfolio() {
       setLanguage(value => value === "en" ? "es" : "en");
       setLanguageChanged(true);
       setChangingLanguage(false);
-    }, reduced ? 0 : 140);
+    }, reduced ? 0 : 240);
     return () => window.clearTimeout(timer);
   }, [changingLanguage]);
   return <div className="portfolio">
