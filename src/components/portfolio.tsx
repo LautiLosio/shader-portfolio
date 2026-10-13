@@ -18,12 +18,24 @@ export function Portfolio() {
   const [paused, setPaused] = useState(false);
   const [projectType, setProjectType] = useState<"web" | "extensions">("web");
   const [language, setLanguage] = useState<"en" | "es">("en");
+  const [changingLanguage, setChangingLanguage] = useState(false);
+  const [languageChanged, setLanguageChanged] = useState(false);
   const copy = translations[language];
   useEffect(() => { document.documentElement.lang = language; }, [language]);
+  useEffect(() => {
+    if (!changingLanguage) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => {
+      setLanguage(value => value === "en" ? "es" : "en");
+      setLanguageChanged(true);
+      setChangingLanguage(false);
+    }, reduced ? 0 : 140);
+    return () => window.clearTimeout(timer);
+  }, [changingLanguage]);
   return <div className="portfolio">
     <ShaderBackground paused={paused} />
     <main className="stage">
-      <div className="content">
+      <div key={language} className={`content${changingLanguage ? " language-exit" : languageChanged ? " language-enter" : ""}`}>
         <nav className="navigation" aria-label={copy.sections}>
           {(["intro", "about", "projects", "contact"] as View[]).map((id, index) => [id, copy.navigation[index]] as [View, string]).map(([id, label]) =>
             <button key={id} type="button" aria-current={view === id ? "page" : undefined} onClick={() => setView(id)}>{label}</button>)}
@@ -51,7 +63,7 @@ export function Portfolio() {
           <ExternalLink href={profile.github}>GitHub</ExternalLink>
         </div>
 
-      <button className="language-toggle" type="button" aria-label={copy.language} onClick={() => setLanguage(value => value === "en" ? "es" : "en")}>{language === "en" ? "EN / ES" : "ES / EN"}</button>
+      <button className="language-toggle" type="button" aria-label={copy.language} disabled={changingLanguage} onClick={() => setChangingLanguage(true)}>{language === "en" ? "EN / ES" : "ES / EN"}</button>
 
       <button className="motion-toggle" type="button" aria-pressed={paused} onClick={() => setPaused(value => !value)} aria-label={paused ? copy.resumeLabel : copy.pauseLabel}>
         <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">{paused ? <path d="m5 3 7 5-7 5Z" fill="currentColor" /> : <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="1.5" />}</svg><span>{paused ? copy.resume : copy.pause}</span>
